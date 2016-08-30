@@ -1,6 +1,6 @@
 var inputTitle;
 var inputLink;
-var read = '<td><input class="read" type="checkbox"></td>';
+var read = '<td><input class="read-check" type="checkbox"></td>';
 var remove = '<td><button class="remove" type="button" name="remove"> Remove </button> </td>';
 
 $('#submit-button').on('click', function() {
@@ -12,14 +12,8 @@ $('#submit-button').on('click', function() {
     '</td>'+ read + remove +'</tr>');
   $('.remove').on('click', function() {
     $(this).parents('tr').remove();
+  $('.read-check').click (function() {
+    $(this).addClass('.read');
+    });
   });
-});
-
-// $('input:checked').parent().parent().addClass('.read');
-
-
-
-
-$('.remove').on('click', function() {
-  $(this).parents('tr').remove();
 });

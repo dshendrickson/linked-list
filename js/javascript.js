@@ -12,7 +12,7 @@ $('#submit-button').on('click', function() {
     '</td>'+ read + remove +'</tr>');
   $('.remove').on('click', function() {
     $(this).parents('tr').remove();
-  $('.read-check').click (function() {
+  $('.read-check').on ('click', function() {
     $(this).addClass('.read');
     });
   });

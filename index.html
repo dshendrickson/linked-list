@@ -5,13 +5,13 @@
   </head>
   <body>
     <section class="link-entry">
-      <input name="title" placeholder="bookmark title"></input>
-      <input name="link" placeholder="bookmark url"></input>
-      <button type="button" name="submit">Submit</button>
+      <input id="input-title" placeholder="bookmark title"></input>
+      <input id="input-link" placeholder="bookmark url"></input>
+      <button id="submit-button" type="button" name="submit"> Submit </button>
     </section>
 
-    <section class="link-list">
-      <table>
+    <section>
+      <table class="link-list">
         <tr>
           <th> Title </th>
           <th> Link </th>
@@ -22,16 +22,15 @@
         <tr>
           <td class="bookmark-title"></td>
           <td class="bookmark-url"></td>
-          <td><input type="checkbox"></td>
-          <td><button type="button" name="remove"> Remove </button> </td>
+          <td><input class="read" type="checkbox"></td>
+          <td><button class="remove" type="button" name="remove"> Remove </button> </td>
         </tr>
 
       </table>
     </section>
 
-
-
-
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script src="./js/javascript.js"></script>
 
   </body>
 </html>

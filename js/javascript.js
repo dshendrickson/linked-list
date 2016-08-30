@@ -10,4 +10,16 @@ $('#submit-button').on('click', function() {
     ('<tr><td>'+ inputTitle +
     '</td><td>'+ inputLink +
     '</td>'+ read + remove +'</tr>');
+  $('.remove').on('click', function() {
+    $(this).parents('tr').remove();
+  });
+});
+
+// $('input:checked').parent().parent().addClass('.read');
+
+
+
+
+$('.remove').on('click', function() {
+  $(this).parents('tr').remove();
 });

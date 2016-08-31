@@ -1,10 +1,9 @@
 var inputTitle = $('#input-title');
-var inputLink;
+var inputLink = $('#input-link');
 var read = '<td><button class="read-check" type="button" name="read">Read</td>';
 var remove = '<td><button class="remove" type="button" name="remove"> Remove </button> </td>';
 
-
-$('#submit-button').prop('disabled', true);
+//** Funtions
 
 function toggleSubmitButton () {
   if($('#input-title').val() != '' && $('#input-link').val() != '') {
@@ -13,6 +12,10 @@ function toggleSubmitButton () {
     $('#submit-button').prop('disabled', true);
   }
 };
+
+//** Program flow
+
+toggleSubmitButton ();
 
 $(inputTitle).keyup(function() {
   toggleSubmitButton();
@@ -23,17 +26,15 @@ $('#input-link').keyup(function() {
 });
 
 $('#submit-button').on('click', function() {
-var inputTitle = $('#input-title').val();
-var inputLink = $('#input-link').val();
-    if (inputTitle === '' || inputLink === '') {
+  var title = inputTitle.val();
+  var link = inputLink.val();
+  if (inputTitle === '' || inputLink === '') {
     alert('please enter valid title and url');
-      } else {
-        $('.link-list tr:last').after
-        (`<tr><td>${inputTitle}
-        </td><td><a href='https://${inputLink}'>${inputLink}</a>
-        </td> ${read} ${remove}</tr>`);
-    $('#input-title').val('');
-    $('#input-link').val('');
+  } else {
+    $('.link-list tr:last').after(`<tr><td>${title}</td><td><a href='https://${link}'>${link}</a></td> ${read}${remove}</tr>`);
+    $(inputTitle).val('');
+    $(inputLink).val('');
+    toggleSubmitButton ();
   };
 });
 

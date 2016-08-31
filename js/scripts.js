@@ -11,7 +11,7 @@ $('#submit-button').on('click', function() {
   inputLink = $('#input-link').val();
   $('.link-list tr:last').after
     (`<tr><td>${inputTitle}
-    </td><td><a href='https://${inputLink}'>link</a>
+    </td><td><a href='https://${inputLink}'>${inputLink}</a>
     </td> ${read} ${remove}</tr>`);
 });
 

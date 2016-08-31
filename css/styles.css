@@ -1,8 +1,18 @@
-
-body {
-  background-color: pink;
-
-.read {
-  background-color: red;
-
+td {
+   padding-bottom: 10px;
 }
+
+ table {
+   layout: fixed;
+   text-align: left;
+ }
+
+/*@media screen and (max-width: 650px) {
+  td {
+    display: flex;
+    flex-wrap;
+    max-height: 300px;
+    max-width: 100px;
+    word-wrap: break-word;
+  }
+}*/

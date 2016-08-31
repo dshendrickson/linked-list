@@ -26,4 +26,11 @@ $('table').on('click', '.remove', function () {
 });
 
 
+
 //make site responsive
+
+//links show up as read when adding a new row
+//delegates work when clicked anywhere on the row not just the box/button
+//the class of read/uread is only applied to the td element
+//get the url to show up
+//need to get the first row to not show up on page load

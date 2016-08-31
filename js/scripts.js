@@ -1,12 +1,10 @@
-var inputTitle;
-var inputLink;
 var read = '<td><button class="read-check" type="button" name="read">Read</td>';
 var remove = '<td><button class="remove" type="button" name="remove"> Remove </button> </td>';
 
 
 $('#submit-button').on('click', function() {
-  inputTitle = $('#input-title').val();
-  inputLink = $('#input-link').val();
+var inputTitle = $('#input-title').val();
+var inputLink = $('#input-link').val();
     if (inputTitle === '' || inputLink === '') {
     alert('please enter information');
       } else {
@@ -28,9 +26,3 @@ $('table').on('click', '.remove', function () {
 
 
 //make site responsive
-
-//links show up as read when adding a new row
-//delegates work when clicked anywhere on the row not just the box/button
-//the class of read/uread is only applied to the td element
-//get the url to show up
-//need to get the first row to not show up on page load

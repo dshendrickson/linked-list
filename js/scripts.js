@@ -24,9 +24,6 @@ $('table').on('click', '.remove', function () {
 });
 
 
-
-
-
 //links show up as read when adding a new row
 //delegates work when clicked anywhere on the row not just the box/button
 //the class of read/uread is only applied to the td element

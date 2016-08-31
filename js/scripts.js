@@ -28,6 +28,14 @@ $('#submit-button').on('click', function() {
   });
 });
 
+<<<<<<< HEAD
 //need to toggle the classes (when box is unchecked it still has class of read)
 //need to make the button functions work outside of the #submit-button
+=======
+
+//links show up as read when adding a new row
+//delegates work when clicked anywhere on the row not just the box/button
+//the class of read/uread is only applied to the td element
+//get the url to show up
+>>>>>>> fixee
 //need to get the first row to not show up on page load

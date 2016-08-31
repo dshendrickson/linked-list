@@ -13,7 +13,7 @@ function toggleSubmitButton () {
   }
 };
 
-var numberOfBookmarks = 0;
+var numberOfBookmarks = 1;
 var numberOfReadBookmarks = 0;
 var numberOfUnreadBookmarks = 0;
 
@@ -22,21 +22,25 @@ var numberOfUnreadBookmarks = 0;
 // $('.number-unread-bookmarks').text(numberOfUnreadBookmarks);
 
 function bookmarks() {
-  numberOfBookmarks = $('tr').size();
+  numberOfBookmarks = $('tr').length - 1;
   return $('.number-bookmarks').text(numberOfBookmarks);
 };
 
 function readBookmarks() {
-  numberOfReadBookmarks = $('.read').size();
+  numberOfReadBookmarks = $('.read').length;
   return $('.number-read-bookmarks').text(numberOfReadBookmarks);
 };
 
 function unreadBookmarks() {
-  numberOfUnreadBookmarks = numberOfReadBookmarks - numberOfBookmarks;
+  numberOfUnreadBookmarks = numberOfBookmarks - numberOfReadBookmarks;
   return $('.number-unread-bookmarks').text(numberOfUnreadBookmarks);
 };
 
 //** Program flow
+
+bookmarks();
+readBookmarks();
+unreadBookmarks();
 
 toggleSubmitButton ();
 
@@ -66,10 +70,16 @@ $('#submit-button').on('click', function() {
 
 $('table').on('click', '.read-check', function () {
   $(this).parent().parent().toggleClass('read');
+  bookmarks();
+  readBookmarks();
+  unreadBookmarks();
 });
 
 $('table').on('click', '.remove', function () {
   $(this).parents('tr').remove();
+  bookmarks();
+  readBookmarks();
+  unreadBookmarks();
 });
 
 

@@ -7,6 +7,10 @@ td {
    text-align: left;
  }
 
+ .read {
+   background-color: gray;
+ }
+
 /*@media screen and (max-width: 650px) {
   td {
     display: flex;

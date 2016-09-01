@@ -33,9 +33,7 @@ function readBookmarks() {
 };
 
 function toggleClearReadButton() {
-  debugger;
-  if(numberOfBookmarks <= 0) {
-    debugger;
+  if($('.read').length <= 0) {
     $('#clear-read-button').prop('disabled', true);
   } else {
     $('#clear-read-button').prop('disabled', false);
@@ -91,7 +89,6 @@ $('#submit-button').on('click', function() {
   if (link === '' || title === '') {
     alert('please enter a title and url');
   } else {
-    var truthyFalsy = validLink(link);
     if (validLink(link) === false) {
       alert('please enter a valid link');
     } else {

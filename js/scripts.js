@@ -1,25 +1,22 @@
-var inputTitle = $('#input-title');
+//
+//** Global Variables - Listed alphabetically
+//
+
 var inputLink = $('#input-link');
-var read = '<td><button class="read-check" type="button" name="read">Read</td>';
-var remove = '<td><button class="remove" type="button" name="remove"> Remove </button> </td>';
-
-//** Funtions
-
-function toggleSubmitButton () {
-  if($('#input-title').val() != '' && $('#input-link').val() != '') {
-    $('#submit-button').prop('disabled', false);
-  } else {
-    $('#submit-button').prop('disabled', true);
-  }
-};
-
+var inputTitle = $('#input-title');
 var numberOfBookmarks = 1;
 var numberOfReadBookmarks = 0;
 var numberOfUnreadBookmarks = 0;
 
-// $('.number-bookmarks').text(numberOfBookmarks);
-// $('.number-read-bookmarks').text(numberOfReadBookmarks);
-// $('.number-unread-bookmarks').text(numberOfUnreadBookmarks);
+//
+//** Functions - Listed alphabetically
+//
+
+function buildRow(title, link) {
+  var read = '<td><button class="read-check" type="button" name="read">Read</td>';
+  var remove = '<td><button class="remove" type="button" name="remove"> Remove </button> </td>';
+  return `<tr><td>${title}</td><td><a href='https://${link}'>${link}</a></td> ${read}${remove}</tr>`;
+};
 
 function bookmarks() {
   numberOfBookmarks = $('tr').length - 1;
@@ -31,18 +28,27 @@ function readBookmarks() {
   return $('.number-read-bookmarks').text(numberOfReadBookmarks);
 };
 
+function toggleSubmitButton () {
+  if($('#input-title').val() != '' && $('#input-link').val() != '') {
+    $('#submit-button').prop('disabled', false);
+  } else {
+    $('#submit-button').prop('disabled', true);
+  }
+};
+
 function unreadBookmarks() {
   numberOfUnreadBookmarks = numberOfBookmarks - numberOfReadBookmarks;
   return $('.number-unread-bookmarks').text(numberOfUnreadBookmarks);
 };
 
+//
 //** Program flow
+//
 
+toggleSubmitButton ();
 bookmarks();
 readBookmarks();
 unreadBookmarks();
-
-toggleSubmitButton ();
 
 $(inputTitle).keyup(function() {
   toggleSubmitButton();
@@ -53,12 +59,13 @@ $(inputLink).keyup(function() {
 });
 
 $('#submit-button').on('click', function() {
-  var title = inputTitle.val();
   var link = inputLink.val();
+  var title = inputTitle.val();
   if (inputTitle === '' || inputLink === '') {
     alert('please enter valid title and url');
   } else {
-    $('.link-list tr:last').after(`<tr><td>${title}</td><td><a href='https://${link}'>${link}</a></td> ${read}${remove}</tr>`);
+    row = buildRow(title, link);
+    $('.link-list tr:last').after(row);
     $(inputTitle).val('');
     $(inputLink).val('');
     toggleSubmitButton();

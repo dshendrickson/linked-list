@@ -61,7 +61,7 @@ $(inputLink).keyup(function() {
 $('#submit-button').on('click', function() {
   var link = inputLink.val();
   var title = inputTitle.val();
-  if (inputTitle === '' || inputLink === '') {
+  if (link === '' || title === '') {
     alert('please enter valid title and url');
   } else {
     row = buildRow(title, link);

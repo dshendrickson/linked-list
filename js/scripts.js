@@ -1,5 +1,5 @@
 //
-//** Global Variables - Listed alphabetically
+//*** Global Variables - Listed alphabetically
 //
 
 var inputLink = $('#input-link');
@@ -9,7 +9,7 @@ var numberOfReadBookmarks = 0;
 var numberOfUnreadBookmarks = 0;
 
 //
-//** Functions - Listed alphabetically
+//*** Functions - Listed alphabetically
 //
 
 function buildRow(title, link) {
@@ -32,7 +32,17 @@ function readBookmarks() {
   return $('.number-read-bookmarks').text(numberOfReadBookmarks);
 };
 
-function toggleSubmitButton () {
+function toggleClearReadButton() {
+  debugger;
+  if(numberOfBookmarks <= 0) {
+    debugger;
+    $('#clear-read-button').prop('disabled', true);
+  } else {
+    $('#clear-read-button').prop('disabled', false);
+  }
+};
+
+function toggleSubmitButton() {
   if($('#input-title').val() != '' && $('#input-link').val() != '') {
     $('#submit-button').prop('disabled', false);
   } else {
@@ -45,8 +55,12 @@ function unreadBookmarks() {
   return $('.number-unread-bookmarks').text(numberOfUnreadBookmarks);
 };
 
+function validLink(link) {
+  return /^(https?|s?ftp):\/\/(((([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(%[\da-f]{2})|[!\$&'\(\)\*\+,;=]|:)*@)?(((\d|[1-9]\d|1\d\d|2[0-4]\d|25[0-5])\.(\d|[1-9]\d|1\d\d|2[0-4]\d|25[0-5])\.(\d|[1-9]\d|1\d\d|2[0-4]\d|25[0-5])\.(\d|[1-9]\d|1\d\d|2[0-4]\d|25[0-5]))|((([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])*([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])))\.)+(([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])*([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])))\.?)(:\d*)?)(\/((([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(%[\da-f]{2})|[!\$&'\(\)\*\+,;=]|:|@)+(\/(([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(%[\da-f]{2})|[!\$&'\(\)\*\+,;=]|:|@)*)*)?)?(\?((([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(%[\da-f]{2})|[!\$&'\(\)\*\+,;=]|:|@)|[\uE000-\uF8FF]|\/|\?)*)?(#((([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(%[\da-f]{2})|[!\$&'\(\)\*\+,;=]|:|@)|\/|\?)*)?$/i.test(link);
+};
+
 //
-//** Events
+//*** Events
 //
 
 //
@@ -56,8 +70,8 @@ function unreadBookmarks() {
 toggleSubmitButton ();
 bookmarks();
 readBookmarks();
+toggleClearReadButton()
 unreadBookmarks();
-
 
 //
 //* Data Create
@@ -75,8 +89,12 @@ $('#submit-button').on('click', function() {
   var link = inputLink.val();
   var title = inputTitle.val();
   if (link === '' || title === '') {
-    alert('please enter valid title and url');
+    alert('please enter a title and url');
   } else {
+    var truthyFalsy = validLink(link);
+    if (validLink(link) === false) {
+      alert('please enter a valid link');
+    } else {
     row = buildRow(title, link);
     $('.link-list tr:last').after(row);
     $(inputTitle).val('');
@@ -84,7 +102,9 @@ $('#submit-button').on('click', function() {
     toggleSubmitButton();
     bookmarks();
     readBookmarks();
+    toggleClearReadButton()
     unreadBookmarks();
+    };
   };
 });
 
@@ -96,6 +116,7 @@ $('table').on('click', '.read-check', function () {
   $(this).parent().parent().toggleClass('read');
   bookmarks();
   readBookmarks();
+  toggleClearReadButton()
   unreadBookmarks();
 });
 
@@ -107,6 +128,7 @@ $('table').on('click', '.remove', function () {
   $(this).parents('tr').remove();
   bookmarks();
   readBookmarks();
+  toggleClearReadButton()
   unreadBookmarks();
 });
 
@@ -114,6 +136,7 @@ $('#clear-read-button').on('click', function() {
   clearReadBookmarks();
   bookmarks();
   readBookmarks();
+  toggleClearReadButton()
   unreadBookmarks();
 });
 

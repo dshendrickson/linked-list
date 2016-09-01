@@ -5,21 +5,28 @@
 header {
   text-align: center;
   border-bottom: 1px solid black;
-  margin-bottom: 10px;
+  margin-bottom: 20px;
 }
 
 h1 {
-  font-family: 'Marcellus', serif;
+  font-family: 'Marcellus SC', serif;
+  font-size: 36pt;
+  padding-bottom: 20px;
 }
 
 h2 {
-  font-size: 12pt;
+  font-size: 18pt;
   padding-bottom: 5px;
 }
 
 h3 {
-  font-size: 18pt;
+  font-size: 12pt;
   padding-bottom: 5px;
+}
+
+.bookmark-counter {
+  text-align: center;
+  margin-bottom: 24px;
 }
 
 tr:nth-of-type(odd) {
@@ -34,11 +41,18 @@ td {
   padding-left: 5px;
 }
 
-footer img, #clear-button {
+footer img {
   display: flex;
-  margin: 50px auto 0;
+  margin: 20% auto;
 }
 
 .read {
   text-decoration: line-through;
+/*}
+
+@media screen and (max-width: 580px) {
+  table {
+    display: flex;
+    flex-direction: column;
+  }*/
 }

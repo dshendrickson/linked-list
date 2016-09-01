@@ -15,7 +15,7 @@ var numberOfUnreadBookmarks = 0;
 function buildRow(title, link) {
   var read = '<td><button class="read-check" type="button" name="read">Read</td>';
   var remove = '<td><button class="remove" type="button" name="remove"> Remove </button> </td>';
-  return `<tr><td>${title}</td><td><a href='https://${link}'>${link}</a></td>${read}${remove}</tr>`;
+  return `<tr><td>${title}</td><td><a href=${link}>${link}</a></td>${read}${remove}</tr>`;
 };
 
 function bookmarks() {
@@ -138,7 +138,3 @@ $('#clear-read-button').on('click', function() {
   toggleClearReadButton()
   unreadBookmarks();
 });
-
-//make site responsive
-//submit button disabled
-//bookmark counter

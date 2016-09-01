@@ -23,6 +23,10 @@ function bookmarks() {
   return $('.number-bookmarks').text(numberOfBookmarks);
 };
 
+function clearReadBookmarks() {
+  $('.read').remove();
+};
+
 function readBookmarks() {
   numberOfReadBookmarks = $('.read').length;
   return $('.number-read-bookmarks').text(numberOfReadBookmarks);
@@ -42,13 +46,22 @@ function unreadBookmarks() {
 };
 
 //
-//** Program flow
+//** Events
+//
+
+//
+//* Onload
 //
 
 toggleSubmitButton ();
 bookmarks();
 readBookmarks();
 unreadBookmarks();
+
+
+//
+//* Data Create
+//
 
 $(inputTitle).keyup(function() {
   toggleSubmitButton();
@@ -75,12 +88,20 @@ $('#submit-button').on('click', function() {
   };
 });
 
+//
+//* Data Update
+//
+
 $('table').on('click', '.read-check', function () {
   $(this).parent().parent().toggleClass('read');
   bookmarks();
   readBookmarks();
   unreadBookmarks();
 });
+
+//
+//* Data Delete
+//
 
 $('table').on('click', '.remove', function () {
   $(this).parents('tr').remove();
@@ -89,7 +110,12 @@ $('table').on('click', '.remove', function () {
   unreadBookmarks();
 });
 
-
+$('#clear-read-button').on('click', function() {
+  clearReadBookmarks();
+  bookmarks();
+  readBookmarks();
+  unreadBookmarks();
+});
 
 //make site responsive
 //submit button disabled
